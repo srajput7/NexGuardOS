@@ -132,6 +132,7 @@
             <option value="windows">Windows</option>
             <option value="macos">macOS</option>
             <option value="linux">Linux</option>
+            <option value="installed">Download .py file</option>
         </select>
 
         <div id="windows-download" style="display: none;">
@@ -149,6 +150,12 @@
         <div id="linux-download" style="display: none;">
             <ul>
                 <li><a href="NexGuard_Linux" download>Linux</a></li>
+            </ul>
+        </div>
+
+        <div id="installed-download" style="display: none;">
+            <ul>
+                <li><a href="NexGuard.py" download>Download .py file</a></li>
             </ul>
         </div>
 
@@ -179,6 +186,7 @@
             document.getElementById('windows-download').style.display = 'none';
             document.getElementById('macos-download').style.display = 'none';
             document.getElementById('linux-download').style.display = 'none';
+            document.getElementById('installed-download').style.display = 'none';
 
             // Show the appropriate section
             if (selectedOS === 'windows') {
@@ -187,6 +195,8 @@
                 document.getElementById('macos-download').style.display = 'block';
             } else if (selectedOS === 'linux') {
                 document.getElementById('linux-download').style.display = 'block';
+            } else if (selectedOS === 'installed') {
+                document.getElementById('installed-download').style.display = 'block';
             }
         });
 
