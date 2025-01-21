@@ -7,44 +7,84 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #000;
-            color: #00ff00;
+            background-color: #121212;
+            color: #f1f1f1;
             font-family: 'Roboto Mono', monospace;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease;
         }
 
         header {
             background: linear-gradient(90deg, #003300, #006600);
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 10;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         header h1 {
             color: #00ff00;
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin: 0;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+            animation: shine 1.5s infinite alternate;
+        }
+
+        @keyframes shine {
+            0% {
+                text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+            }
+            50% {
+                text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00;
+            }
+            100% {
+                text-shadow: 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00;
+            }
         }
 
         header p {
             color: #33ff33;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+            animation-delay: 0.5s;
         }
 
         .container {
-            padding: 20px;
+            padding: 40px 20px;
             max-width: 1200px;
             margin: auto;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+            animation-delay: 1s;
         }
 
         h2 {
             color: #00cc00;
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-top: 30px;
             border-bottom: 2px solid #00ff00;
             display: inline-block;
             padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        h2:hover {
+            color: #33ff33;
         }
 
         ul {
@@ -53,42 +93,78 @@
         }
 
         ul li {
-            padding: 10px 0;
+            padding: 15px 0;
+            font-size: 1.2rem;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+            animation-delay: 1.2s;
         }
 
         a {
             color: #00ff00;
             text-decoration: none;
-            transition: color 0.3s;
+            font-size: 1.2rem;
+            display: inline-block;
+            opacity: 0;
+            animation: typing 3s steps(30) 1s forwards, fadeIn 0.5s forwards;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
         }
 
         a:hover {
             color: #33ff33;
+            transform: translateY(-5px);
         }
 
         select, option {
             background-color: #003300;
             color: #00ff00;
             border: 2px solid #00ff00;
-            padding: 10px;
+            padding: 12px;
             font-size: 1rem;
-            margin-top: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        select:hover, option:hover {
+            background-color: #005500;
         }
 
         footer {
             background-color: #003300;
             color: #00ff00;
             text-align: center;
-            padding: 10px;
+            padding: 15px;
             font-size: 0.9rem;
             position: relative;
             bottom: 0;
             width: 100%;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+            animation-delay: 1.5s;
+        }
+
+        footer a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #33ff33;
         }
 
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             header p {
@@ -96,7 +172,15 @@
             }
 
             h2 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
+            }
+
+            ul li {
+                font-size: 1rem;
+            }
+
+            footer {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -108,11 +192,11 @@
     </header>
 
     <div class="container">
-        <h2>About SecureOS</h2>
-        <p>SecureOS is a cross-platform application designed to detect vulnerabilities, enhance security, and configure operating systems for optimal protection. Whether you’re using it for personal use, business, or advanced setups, SecureOS has you covered.</p>
+        <h2>About NexGuardOS</h2>
+        <p>NexGuard is a cross-platform application designed to detect vulnerabilities, enhance security, and configure operating systems for optimal protection. Whether you’re using it for personal use, business, or advanced setups, SecureOS has you covered.</p>
 
         <h2>Download</h2>
-        <p>Choose your operating system and follow the instructions to download the Python file and set up SecureOS:</p>
+        <p>Choose your operating system and follow the instructions to download the Python file and set up NexGuard:</p>
         
         <label for="os-select">Select OS:</label>
         <select id="os-select">
@@ -123,26 +207,44 @@
 
         <div id="download-instructions" style="display: none;">
             <h3>Instructions</h3>
-            <p>Follow the steps to run SecureOS on your operating system:</p>
-            <ul>
-                <li><a href="SecureOS.py" download>Download SecureOS Python file (.py)</a></li>
-                <li>For <strong>Windows</strong>, run the following command in the command prompt: <code>python SecureOS.py</code></li>
-                <li>For <strong>macOS</strong>, open a terminal and run: <code>python3 SecureOS.py</code></li>
-                <li>For <strong>Linux</strong>, open a terminal and run: <code>python3 SecureOS.py</code></li>
+            <p>Follow the steps to run NexGuard on your operating system:</p>
+            <ul id="instructions-list">
+                <li><a href="NexGuard.py" download>Download NexGuard Python file (.py)</a></li>
+                <!-- Instructions will be dynamically updated here -->
             </ul>
         </div>
     </div>
 
     <footer>
-        &copy; 2023 NexGuardOS | Shayan Rajput
+        &copy; 2023 NexGuardOS | <a href="#">Shayan Rajput</a>
     </footer>
 
     <script>
         const osSelect = document.getElementById('os-select');
         const instructionsDiv = document.getElementById('download-instructions');
+        const instructionsList = document.getElementById('instructions-list');
         
         osSelect.addEventListener('change', function() {
+            const selectedOS = osSelect.value;
+
             instructionsDiv.style.display = 'block';
+            instructionsList.innerHTML = `
+                <li><a href="NexGuard.py" download>Download NexGuard Python file (.py)</a></li>
+            `;
+
+            if (selectedOS === 'windows') {
+                instructionsList.innerHTML += `
+                    <li>For <strong>Windows</strong>, run the following command in the command prompt: <code>python NexGuard.py</code></li>
+                `;
+            } else if (selectedOS === 'macos') {
+                instructionsList.innerHTML += `
+                    <li>For <strong>macOS</strong>, open a terminal and run: <code>python3 NexGuard.py</code></li>
+                `;
+            } else if (selectedOS === 'linux') {
+                instructionsList.innerHTML += `
+                    <li>For <strong>Linux</strong>, open a terminal and run: <code>python3 NexGuard.py</code></li>
+                `;
+            }
         });
 
         // Trigger change to set initial visibility
