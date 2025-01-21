@@ -111,65 +111,26 @@
         <h2>About SecureOS</h2>
         <p>SecureOS is a cross-platform application designed to detect vulnerabilities, enhance security, and configure operating systems for optimal protection. Whether you’re using it for personal use, business, or advanced setups, SecureOS has you covered.</p>
 
-        <h2>Features</h2>
-        <ul>
-            <li>Detect open ports to find vulnerabilities</li>
-            <li>Monitor network for packet sniffing attempts</li>
-            <li>Auto-configures OS-specific security features:</li>
-            <ul>
-                <li>macOS: FileVault, Firewall, and SIP</li>
-                <li>Linux: AppArmor/SELinux, iptables, SSH hardening</li>
-                <li>Windows: Defender Firewall, BitLocker, RDP hardening</li>
-            </ul>
-            <li>Choose your profile: Personal, Business, or Advanced</li>
-        </ul>
-
         <h2>Download</h2>
-        <p>Choose the version for your operating system:</p>
+        <p>Choose your operating system and follow the instructions to download the Python file and set up SecureOS:</p>
         
         <label for="os-select">Select OS:</label>
         <select id="os-select">
             <option value="windows">Windows</option>
             <option value="macos">macOS</option>
             <option value="linux">Linux</option>
-            <option value="installed">Download .py file</option>
         </select>
 
-        <div id="windows-download" style="display: none;">
+        <div id="download-instructions" style="display: none;">
+            <h3>Instructions</h3>
+            <p>Follow the steps to run SecureOS on your operating system:</p>
             <ul>
-                <li><a href="NexGuard_Windows.exe" download>Windows (.exe)</a></li>
+                <li><a href="SecureOS.py" download>Download SecureOS Python file (.py)</a></li>
+                <li>For <strong>Windows</strong>, run the following command in the command prompt: <code>python SecureOS.py</code></li>
+                <li>For <strong>macOS</strong>, open a terminal and run: <code>python3 SecureOS.py</code></li>
+                <li>For <strong>Linux</strong>, open a terminal and run: <code>python3 SecureOS.py</code></li>
             </ul>
         </div>
-        
-        <div id="macos-download" style="display: none;">
-            <ul>
-                <li><a href="NexGuard_MacOS.app" download>macOS (.app)</a></li>
-            </ul>
-        </div>
-        
-        <div id="linux-download" style="display: none;">
-            <ul>
-                <li><a href="NexGuard_Linux" download>Linux</a></li>
-            </ul>
-        </div>
-
-        <div id="installed-download" style="display: none;">
-            <ul>
-                <li><a href="NexGuard.py" download>Download .py file</a></li>
-            </ul>
-        </div>
-
-        <h2>How to Build Executables (For Developers)</h2>
-        <p>If you're a developer and want to create the executables yourself, follow the steps below to build SecureOS for your platform:</p>
-        <ul>
-            <li>Install PyInstaller: <code>pip install pyinstaller</code></li>
-            <li>Run the following commands to build the executables:</li>
-            <ul>
-                <li>For <strong>Windows</strong>: <code>pyinstaller --onefile --windowed SecureOS.py</code></li>
-                <li>For <strong>macOS/Linux</strong>: <code>pyinstaller --onefile SecureOS.py</code></li>
-            </ul>
-            <li>After running the above commands, the executables will be located in the <code>dist</code> folder.</li>
-        </ul>
     </div>
 
     <footer>
@@ -178,26 +139,10 @@
 
     <script>
         const osSelect = document.getElementById('os-select');
+        const instructionsDiv = document.getElementById('download-instructions');
         
         osSelect.addEventListener('change', function() {
-            const selectedOS = osSelect.value;
-            
-            // Hide all download sections
-            document.getElementById('windows-download').style.display = 'none';
-            document.getElementById('macos-download').style.display = 'none';
-            document.getElementById('linux-download').style.display = 'none';
-            document.getElementById('installed-download').style.display = 'none';
-
-            // Show the appropriate section
-            if (selectedOS === 'windows') {
-                document.getElementById('windows-download').style.display = 'block';
-            } else if (selectedOS === 'macos') {
-                document.getElementById('macos-download').style.display = 'block';
-            } else if (selectedOS === 'linux') {
-                document.getElementById('linux-download').style.display = 'block';
-            } else if (selectedOS === 'installed') {
-                document.getElementById('installed-download').style.display = 'block';
-            }
+            instructionsDiv.style.display = 'block';
         });
 
         // Trigger change to set initial visibility
